@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+    Edit Book
+{% endblock %}
+
+{% block content %}
+<div style="direction: rtl;" class="wrapper">
+
+    <!-- Content Wrapper. Contains page content -->
+    <div   class="content-wrapper">
+      <!-- Content Header (Page header) -->
+  <div  class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">تعديل الكتاب</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form  method="POST" enctype="multipart/form-data" style="margin: 30px;">
+      
+        <!-- <div class="card-body"></div> -->
+        <!-- /.card-body -->
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        {% buttons %}
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">حفظ</button>
+        </div>
+        {% endbuttons %}
+      </form>
+    </div>
+  </div>
+  </div>
+{% endblock %}

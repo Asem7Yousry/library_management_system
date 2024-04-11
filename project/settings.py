@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    ### main app ###
+    'books',
+    ### bootstrap 4 ###
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +123,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 ### connect static files directory to the whole ui of system ####
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staic'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 #### connect the media files to the whole project #####
 MEDIA_URL = 'media/'

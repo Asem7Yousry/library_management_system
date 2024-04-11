@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Delete Book
+{% endblock %}
+
+{% block content %}
+
+<div style="direction: rtl;" class="wrapper">
+
+    <!-- Content Wrapper. Contains page content -->
+    <div   class="content-wrapper">
+      <!-- Content Header (Page header) -->
+  <div  class="card card-danger">
+      <div class="card-header">
+        <h3 class="card-title">حذف الكتاب : ({{ book.title }})</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form  method="POST" enctype="multipart/form-data">
+      
+        <div class="row">
+          
+       <p class="p-3">هل تريد حقاً حذف  هذا الكتاب؟</p>
+   
+        </div>
+        <!-- /.card-body -->
+  
+        <div class="card-footer">
+            <form >
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">حذف</button>
+            </form>
+            <button  class="btn btn-success"><a style="text-decoration: none; color: aliceblue;" href="{% url 'all_books' %}">تراجع</a></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+
+
+{% endblock %}

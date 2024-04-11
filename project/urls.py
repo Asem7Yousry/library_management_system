@@ -15,13 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path , include
 #### import packages to connect all static files and media files directory ####
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('books.urls')),
 ]
 ########### connect all static and media files to whole user interfaces in project for each app ####
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
