@@ -59,7 +59,7 @@ def image_method_auther(instance, filename):
 
 ### model for book ###
 class Book(models.Model):
-    title = models.CharField(max_length= 50)
+    name = models.CharField(max_length= 50)
     category = models.ForeignKey(Category , on_delete=models.CASCADE)
     auther = models.CharField(max_length=50)
     book_image = models.ImageField(upload_to= image_method_book , null=True , blank= True)
@@ -71,16 +71,16 @@ class Book(models.Model):
     status = models.CharField(max_length=30,choices= BOOK_STATUS ,default= 'Available', null=True , blank= True)
     slug = models.SlugField(null=True, blank=True)
     
-    ### to show category with its title ###
+    ### to show category with its name ###
     def __str__(self) -> str:
-        return f'{self.title}'
+        return f'{self.name}'
     
     ### override on save metod ###
     def save(self, *args , **kwargs):
         if not self.slug:
             ### check if self.title is arabic or not 
-            if is_arabic(self.title):
-                self.slug = arabic_slugify(self.title)
+            if is_arabic(self.name):
+                self.slug = arabic_slugify(self.name)
             else:
-                self.slug = slugify(self.title)
+                self.slug = slugify(self.name)
         super().save(*args, **kwargs)

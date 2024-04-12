@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 <aside style="position: fixed;" class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
@@ -27,14 +28,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{% url 'add_new_book' %}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Add New Books
-              </p>
-            </a>
-          </li>
+          
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -54,13 +48,17 @@
                   </li> 
               <form id="cat" method="POST">
              
-                  <input type="text" class="form-control">
+                {% csrf_token %}
+                {% bootstrap_form category_form %}
 
-                  <button type="submit" class="btn btn-success">save</button>
-                  <button id="backcat" class="btn btn-primary ">back</button>
+                {% buttons %}
+                <button  class="btn btn-success">save</button>
+                {% endbuttons %}
+
+                  <!-- <button id="backcat" class="btn btn-primary ">back</button> -->
               </form>  
                   {% for category in categories %}
-                  <li style="cursor: pointer;" class="nav-item">
+                  <li style="cursor: pointer;" class="nav-item cat{{category.id}}">
                     <a id="" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>{{category.title}}</p>
@@ -72,20 +70,20 @@
 
           <li class="nav-header">الكتب المستعارة</li>
           
-          <li style="cursor: pointer;" class="nav-item">
-            <a id="statusSold" class="nav-link">
+          <li style="cursor: pointer;" class="nav-item statusSold">
+            <a id="" class="nav-link statusSold">
               <i class="nav-icon far fa-circle text-danger"></i>
               <p class="text">تم بيعه</p>
             </a>
           </li>
-          <li style="cursor: pointer;" class="nav-item">
-            <a id="" class="nav-link">
+          <li style="cursor: pointer;" class="nav-item statusRented">
+            <a id="" class="nav-link statusRented">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>تم استعارته</p>
             </a>
           </li>
-          <li style="cursor: pointer;" class="nav-item">
-            <a id="" class="nav-link">
+          <li style="cursor: pointer;" class="nav-item " >
+            <a id="" class="nav-link statusAvailable">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>متاح</p>
             </a>

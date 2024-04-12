@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'books',
     ### bootstrap 4 ###
     'bootstrap4',
+    ### for filtering ###
+    'django_filters',
 ]
 
 MIDDLEWARE = [
